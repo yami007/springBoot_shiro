@@ -8,7 +8,7 @@
         <result property="password" column="password"></result>
         <collection property="roles" ofType="com.yami.springbootshiro.model.Role">
             <id property="rid" column="rid"></id>
-            <result property="name" column="name"></result>
+            <result property="rname" column="rname"></result>
             <collection property="permissions" ofType="com.yami.springbootshiro.model.Permission">
                 <id property="pid" column="pid"></id>
                 <result property="name" column="name"></result>

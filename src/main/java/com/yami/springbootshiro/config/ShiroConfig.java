@@ -29,6 +29,7 @@ public class ShiroConfig {
         filterChainDefinitonMap.put("/index", "authc");
         filterChainDefinitonMap.put("/login", "anon");
         filterChainDefinitonMap.put("/loginUser", "anon");
+        filterChainDefinitonMap.put("/admin", "roles[admin]");
         filterChainDefinitonMap.put("/**", "user");
         factoryBean.setFilterChainDefinitionMap(filterChainDefinitonMap);
         return factoryBean;

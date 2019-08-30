@@ -25,9 +25,11 @@ public class AuthRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         User user = (User) principals.fromRealm(this.getClass().getName()).iterator().next();
         List<String> permissionList = new ArrayList<>();
+        List<String> roleNameList = new ArrayList<>();
         Set<Role> roles = user.getRoles();
         if (!CollectionUtils.isEmpty(roles)) {
             for (Role role : roles) {
+                roleNameList.add(role.getRname());
                 Set<Permission> permissions = role.getPermissions();
                 if (!CollectionUtils.isEmpty(permissions)) {
                     for (Permission permission : permissions) {
@@ -38,6 +40,7 @@ public class AuthRealm extends AuthorizingRealm {
         }
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         simpleAuthorizationInfo.addStringPermissions(permissionList);
+        simpleAuthorizationInfo.addRoles(roleNameList);
         return simpleAuthorizationInfo;
     }
 
