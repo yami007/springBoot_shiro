@@ -21,7 +21,7 @@
         SELECT u.* ,r.*,p.* FROM USER u
             INNER JOIN user_role ur ON ur.uid = u.uid
             INNER JOIN role r ON r.rid=ur.rid
-            INNER JOIN permission_role pr ON pr.pid=r.rid
+            INNER JOIN permission_role pr ON pr.rid=r.rid
             INNER JOIN permission p ON pr.pid=p.pid
          WHERE u.username = #{username}
     </select>

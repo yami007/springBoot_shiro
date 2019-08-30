@@ -32,12 +32,23 @@ public class ControllerTest {
     public String index() {
         return "index";
     }
+    @RequestMapping("/unauthorized")
+    public String unauthorized() {
+        return "unauthorized";
+    }
 
     @RequestMapping("/admin")
     @ResponseBody
     public String admin() {
         return "admin succ";
     }
+    @RequestMapping("/edit")
+    @ResponseBody
+    public String edit() {
+        return "edit succ";
+    }
+
+
 
     /**
      * 登录

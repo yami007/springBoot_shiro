@@ -20,9 +20,11 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("securityManager") SecurityManager securityManager) {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager);
-
+        //登录页面
         factoryBean.setLoginUrl("/login");
+        // 登录成功页面
         factoryBean.setSuccessUrl("/index");
+        // 无权限页面
         factoryBean.setUnauthorizedUrl("/unauthorized");
 
         LinkedHashMap<String, String> filterChainDefinitonMap = new LinkedHashMap<>();
@@ -30,6 +32,7 @@ public class ShiroConfig {
         filterChainDefinitonMap.put("/login", "anon");
         filterChainDefinitonMap.put("/loginUser", "anon");
         filterChainDefinitonMap.put("/admin", "roles[admin]");
+        filterChainDefinitonMap.put("/edit", "perms[edit]");
         filterChainDefinitonMap.put("/**", "user");
         factoryBean.setFilterChainDefinitionMap(filterChainDefinitonMap);
         return factoryBean;
