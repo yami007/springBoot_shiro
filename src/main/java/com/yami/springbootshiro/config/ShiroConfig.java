@@ -33,6 +33,7 @@ public class ShiroConfig {
         filterChainDefinitonMap.put("/loginUser", "anon");
         filterChainDefinitonMap.put("/admin", "roles[admin]");
         filterChainDefinitonMap.put("/edit", "perms[edit]");
+        filterChainDefinitonMap.put("/druid/**", "anon");
         filterChainDefinitonMap.put("/**", "user");
         factoryBean.setFilterChainDefinitionMap(filterChainDefinitonMap);
         return factoryBean;
